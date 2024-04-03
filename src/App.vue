@@ -1,20 +1,24 @@
 <template>
   <LayoutHeader> </LayoutHeader>
+  <DisplayCounter :counter="counter" @increase="handleCounter" />
   <BookList :books="books"></BookList>
 </template>
 
 <script>
 import LayoutHeader from "@/components/LayoutHeader.vue";
 import BookList from "@/components/BookList.vue";
+import DisplayCounter from "@/components/DisplayCounter.vue";
 
 export default {
   name: "App",
   components: {
     LayoutHeader,
     BookList,
+    DisplayCounter,
   },
   data() {
     return {
+      counter: 10,
       books: [
         {
           title: "Practical Rust Web Projects",
@@ -50,6 +54,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    handleCounter() {
+      this.counter++;
+    },
   },
 };
 </script>
