@@ -6,24 +6,22 @@
         <tr>
           <th class="table-item__table-head-name">Name</th>
           <th class="table-item__table-head--isbn">ISBN</th>
+          <th class="table-item__table-head-actions">Action</th>
+          <th class="table-item__table-head-actions">Empty</th>
         </tr>
       </thead>
-      <tbody>
-        <tr
-          v-for="book in books"
-          :key="book.isbn"
-          class="table-item__table-row"
-        >
-          <td>{{ book.title }}</td>
-          <td>{{ book.isbn }}</td>
-        </tr>
-      </tbody>
+      <BookListRow :books="books"></BookListRow>
     </table>
   </section>
 </template>
 
 <script>
+import BookListRow from "@/components/BookListRow.vue";
+
 export default {
+  components: {
+    BookListRow,
+  },
   name: "BookList",
   props: {
     books: Object,
